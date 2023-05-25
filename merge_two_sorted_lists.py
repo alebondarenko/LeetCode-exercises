@@ -13,6 +13,7 @@ class Solution(object):
         """
 
         head = ListNode()
+
         current = head
         while list1 and list2:
             if list1.val < list2.val:
@@ -29,10 +30,6 @@ class Solution(object):
 
 solution = Solution()
 
-# print(solution.mergeTwoLists(list1 = [1,2,4], list2 = [1,3,4]))
-# print(solution.mergeTwoLists(list1 = [], list2 = []))
-# print(solution.mergeTwoLists(list1 = [], list2 = [0]))
-
 def createLinkedList(lst):
     head = None
     for val in reversed(lst):
@@ -46,7 +43,19 @@ def toList(head):
         head = head.next
     return lst
 
+
+obj = Solution()
+
 l1 = createLinkedList([1,2,4])
 l2 = createLinkedList([1,3,4])
-obj = Solution()
+print(toList(obj.mergeTwoLists(l1, l2)))
+
+l1 = createLinkedList([])
+l2 = createLinkedList([])
 print(toList(obj.mergeTwoLists(l1,l2)))
+
+l1 = createLinkedList([])
+l2 = createLinkedList([0])
+print(toList(obj.mergeTwoLists(l1,l2)))
+
+# explanation: https://www.youtube.com/watch?v=E5XXiY6QnAs
