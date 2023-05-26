@@ -20,6 +20,20 @@ class Solution(object):
             if check_dict[s[i]] != s[i+1]:
                 return False
         return True
+    
+    def isValid2(self, s: str) -> bool:
+        """Solution written by YouChat"""
+        stack = []
+        brackets_map = {')': '(', '}': '{', ']': '['}
+        
+        for char in s:
+            if char in brackets_map.values():
+                stack.append(char)
+            else:
+                if not stack or brackets_map[char] != stack.pop():
+                    return False
+        
+        return not stack
         
 solution = Solution()
 
@@ -27,3 +41,8 @@ print(solution.isValid("()"))
 print(solution.isValid("()[]{}"))
 print(solution.isValid("(]"))
 print(solution.isValid("[()]")) # would be interesting to solve this case
+print()
+print(solution.isValid2("()"))
+print(solution.isValid2("()[]{}"))
+print(solution.isValid2("(]"))
+print(solution.isValid2("[()]")) # solved
