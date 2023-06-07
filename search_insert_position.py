@@ -20,9 +20,31 @@ class Solution(object):
                 return i-1
         
         return len(nums)+1
+    
+    def searchInsert2(self, nums: List[int], target: int) -> int:
+        
+        l = 0
+        r = len(nums) - 1
+
+        while l <= r:
+            mid = (l + r) // 2
+
+            if nums[mid] < target:
+                l = mid + 1
+            elif nums[mid] > target:
+                r = mid -1
+            else:
+                return mid
+            
+        return l
+
 
 
 solution = Solution()
 print(solution.searchInsert(nums = [1,3,5,6], target = 5))
 print(solution.searchInsert(nums = [1,3,5,6], target = 2))
 print(solution.searchInsert(nums = [1,3,5,6], target = 7))
+print()
+print(solution.searchInsert2(nums = [1,3,5,6], target = 5))
+print(solution.searchInsert2(nums = [1,3,5,6], target = 2))
+print(solution.searchInsert2(nums = [1,3,5,6], target = 7))
